@@ -16,14 +16,11 @@ public class WorkExperienceViewModel
 
     }
 
-    public static explicit operator WorkExperienceViewModel(WorkExperience workExperience)
+    public static explicit operator WorkExperienceViewModel(WorkExperience workExperience) => new()
     {
-        return new WorkExperienceViewModel
-        {
-            WorkExperienceId = workExperience.WorkExperienceId,
-            JobTitle = workExperience.JobTitle,
-            StartDate = workExperience.StartDate,
-            EndDate = workExperience.EndDate
-        };
-    }
+        WorkExperienceId = workExperience.WorkExperienceId,
+        JobTitle = workExperience.JobTitle,
+        StartDate = workExperience.StartDate,
+        EndDate = workExperience.EndDate
+    };
 }

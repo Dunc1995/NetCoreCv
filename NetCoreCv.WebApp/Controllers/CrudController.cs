@@ -11,7 +11,8 @@ public abstract class CrudController<T, U> : Controller
 {
     private protected readonly IRepository<T> _context;
 
-    public CrudController(IRepository<T> context) {
+    public CrudController(IRepository<T> context)
+    {
         _context = context;
     }
 
