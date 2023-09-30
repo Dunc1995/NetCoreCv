@@ -1,24 +1,18 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Collections;
+using Microsoft.AspNetCore.Mvc;
 using NetCoreCv.Core.Interfaces;
+using NetCoreCv.WebApp;
 
 namespace NetCoreCv;
 
-public abstract class CrudController<T, U, V> : Controller
-    where T : V, new()
-    where U : IRepository<V>
-    where V : class, new()
+public abstract class CrudController<T, U> : Controller
+    where T : class, new()
+    where U : IRepository<T>
 {
-    private readonly IRepository<V> _context;
+    private protected readonly IRepository<T> _context;
 
-    public CrudController(IRepository<V> context) {
+    public CrudController(IRepository<T> context) {
         _context = context;
-    }
-
-    public async Task<IActionResult> Index()
-    {
-        var items = await _context.GetAllAsync();
-
-        return View(items.Select(x => (T)x));
     }
 
     // [HttpPut]

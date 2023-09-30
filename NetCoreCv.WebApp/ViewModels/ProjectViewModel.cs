@@ -15,13 +15,10 @@ public class ProjectViewModel
 
     }
 
-    public static explicit operator ProjectViewModel(Project project)
+    public static explicit operator ProjectViewModel(Project project) => new()
     {
-        return new ProjectViewModel
-        {
-            ProjectId = project.ProjectId,
-            Title = project.Title,
-            Description = project.Description
-        };
-    }
+        ProjectId = project.ProjectId,
+        Title = project.Title,
+        Description = project.Description
+    };
 }
