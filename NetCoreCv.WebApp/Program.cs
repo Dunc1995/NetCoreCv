@@ -4,8 +4,10 @@ using NetCoreCv.Core.Repositories;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole();
 builder.Services.AddControllersWithViews();
-builder.Services.AddScoped<ICvContext, CvContext>();
+builder.Services.AddScoped<CvContext>();
 builder.Services.AddTransient<WorkExperienceRepository>();
 builder.Services.AddTransient<ProjectRepository>();
 

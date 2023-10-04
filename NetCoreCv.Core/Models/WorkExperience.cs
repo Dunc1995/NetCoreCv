@@ -1,6 +1,8 @@
 ﻿namespace NetCoreCv.Core.Models;
-public class WorkExperience
+public class WorkExperience : IModel
 {
+    public int Id => WorkExperienceId;
+
     public int WorkExperienceId { get; set; }
 
     public string JobTitle { get; set; } = "";

@@ -21,4 +21,11 @@ public class ProjectViewModel
         Title = project.Title,
         Description = project.Description
     };
+
+    public static explicit operator Project(ProjectViewModel project) => new()
+    {
+        ProjectId = project.ProjectId,
+        Title = project.Title,
+        Description = project.Description
+    };
 }

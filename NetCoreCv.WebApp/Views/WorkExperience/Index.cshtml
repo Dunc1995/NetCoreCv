@@ -3,10 +3,21 @@
 }
 @model IEnumerable<WorkExperienceViewModel>
 
-<div class="text-center">
+<div class="text-left">
     <h1 class="display-4">Work Experience</h1>
-@foreach (var item in Model)
-{
-    <div>@item.JobTitle</div>
-}
+    <ul class="list-group list-group-flush deletable">
+        @foreach (var item in Model)
+        {
+            <li class="list-group-item">
+                <div class="d-flex w-100 justify-content-between">
+                    <span>@item.JobTitle</span>
+                    <small>
+                        <a href="WorkExperience/Edit/@item.WorkExperienceId">Edit</a>
+                        <a class="delete-button" item-id="@item.WorkExperienceId">Delete</a>
+                    </small>
+                </div>
+            </li>
+        }
+    </ul>
+    <button type="link" class="btn btn-primary" href="Edit">Add Work Experience</button>
 </div>

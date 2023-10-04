@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace NetCoreCv.Core.Repositories
 {
-    public class CvContext : DbContext, ICvContext
+    public class CvContext : DbContext
     {
         public DbSet<Project> Projects { get; set; }
 
@@ -25,5 +25,7 @@ namespace NetCoreCv.Core.Repositories
         // special "local" folder for your platform.
         protected override void OnConfiguring(DbContextOptionsBuilder options)
             => options.UseSqlite($"Data Source={DbPath}");
+
+        public Task SaveChangesAsync() => base.SaveChangesAsync();
     }
 }

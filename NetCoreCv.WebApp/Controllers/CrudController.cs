@@ -16,8 +16,11 @@ public abstract class CrudController<T, U> : Controller
         _context = context;
     }
 
-    // [HttpPut]
-    // public T Edit() {
-    //     return new T();
-    // }
+    [HttpDelete]
+    public async Task<IActionResult> Delete(int id) {
+        
+        await _context.DeleteAsync(id);
+
+        return Ok();
+    }
 }
