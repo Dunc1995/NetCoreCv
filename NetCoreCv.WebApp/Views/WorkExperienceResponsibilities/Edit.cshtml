@@ -1,0 +1,27 @@
+@{
+    ViewData["Title"] = "Add Responsibility";
+}
+@model WorkExperienceResponsibilityViewModel
+
+<div class="text-left">
+    <h1 class="display-4">Add Responsibility</h1>
+    <form class="row g-3" asp-action="Edit" method="PUT">
+        <input name="WorkExperienceResponsibilityId" asp-for="WorkExperienceResponsibilityId" />
+        <input name="WorkExperienceId" asp-for="WorkExperienceId" />
+
+        <div class="col-12">
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <textarea name="Description" asp-for="Description" class="form-control" cols="25" rows="3"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-12">
+            <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

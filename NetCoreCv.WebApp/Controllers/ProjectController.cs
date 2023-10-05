@@ -3,16 +3,12 @@ using NetCoreCv.Core.Models;
 using NetCoreCv.Core.Repositories;
 using NetCoreCv.WebApp.ViewModels;
 
-namespace NetCoreCv;
-public class ProjectController : CrudController<Project, ProjectRepository>
+namespace NetCoreCv.WebApp.Controllers;
+
+public class ProjectController : CrudController<ProjectViewModel, Project, ProjectRepository>
 {
     public ProjectController(ProjectRepository context) : base(context)
     {
 
-    }
-
-    public async Task<IActionResult> Index()
-    {
-        return View((await _context.GetAllAsync()).Select(x => (ProjectViewModel)x));
     }
 }

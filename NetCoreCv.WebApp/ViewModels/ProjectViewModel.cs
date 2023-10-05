@@ -1,8 +1,9 @@
 ﻿using NetCoreCv.Core.Models;
+using NetCoreCv.WebApp.Interfaces;
 
 namespace NetCoreCv.WebApp.ViewModels;
 
-public class ProjectViewModel
+public class ProjectViewModel : IViewModel<ProjectViewModel, Project>
 {
     public int ProjectId { get; set; }
 

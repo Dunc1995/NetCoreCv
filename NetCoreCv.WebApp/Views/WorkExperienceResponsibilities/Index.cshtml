@@ -1,0 +1,23 @@
+@{
+    ViewData["Title"] = "Work Experience Responsibilities";
+}
+@model WorkExperienceResponsibilitiesViewModel
+
+<div class="text-left">
+    <h1 class="display-4">@Model.JobTitle - Edit Responsiblities</h1>
+    <ul class="list-group list-group-flush deletable">
+        @foreach (var item in Model.Responsibilities)
+        {
+            <li class="list-group-item">
+                <div class="d-flex w-100 justify-content-between">
+                    <span>@item.Description</span>
+                    <small>
+                        <a href="WorkExperienceResponsibilities/Edit/@item.WorkExperienceResponsibilityId">Edit</a>
+                        <a class="delete-button" item-id="@item.WorkExperienceResponsibilityId">Delete</a>
+                    </small>
+                </div>
+            </li>
+        }
+    </ul>
+    <button type="link" class="btn btn-primary" href="Edit">Add Responsibility</button>
+</div>

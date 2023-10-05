@@ -9,6 +9,7 @@ builder.Logging.AddConsole();
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<CvContext>();
 builder.Services.AddTransient<WorkExperienceRepository>();
+builder.Services.AddTransient<WorkExperienceResponsibilitiesRepository>();
 builder.Services.AddTransient<ProjectRepository>();
 
 var app = builder.Build();

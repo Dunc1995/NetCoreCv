@@ -12,6 +12,8 @@ namespace NetCoreCv.Core.Repositories
 
         public DbSet<WorkExperience> WorkExperiences { get; set; }
 
+        public DbSet<WorkExperienceResponsibility> WorkExperienceResponsibilities { get; set; }
+
         public string DbPath { get; }
 
         public CvContext()

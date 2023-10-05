@@ -1,9 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Mvc;
 using NetCoreCv.Core.Models;
+using NetCoreCv.WebApp.Interfaces;
 
 namespace NetCoreCv.WebApp.ViewModels;
-public class WorkExperienceViewModel
+
+public class WorkExperienceViewModel : IViewModel<WorkExperienceViewModel, WorkExperience>
 {
     [HiddenInput]
     public int WorkExperienceId { get; set; }

@@ -11,6 +11,8 @@ public class WorkExperience : IModel
 
     public DateTime EndDate { get; set; }
 
+    public IEnumerable<WorkExperienceResponsibility>? Responsibilities { get; set; }
+
     public WorkExperience() {
 
     }

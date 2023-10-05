@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using NetCoreCv.WebApp.ViewModels;
 
-namespace NetCoreCv.Controllers;
+namespace NetCoreCv.WebApp.Controllers;
 
 public class HomeController : Controller
 {
