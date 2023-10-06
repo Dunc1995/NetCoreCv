@@ -1,8 +1,6 @@
 ﻿namespace NetCoreCv.Core.Models;
-public class WorkExperience : IModel
+public class WorkExperience
 {
-    public int Id => WorkExperienceId;
-
     public int WorkExperienceId { get; set; }
 
     public string JobTitle { get; set; } = "";
@@ -11,7 +9,7 @@ public class WorkExperience : IModel
 
     public DateTime EndDate { get; set; }
 
-    public IEnumerable<WorkExperienceResponsibility>? Responsibilities { get; set; }
+    public IEnumerable<Responsibility>? Responsibilities { get; set; }
 
     public WorkExperience() {
 

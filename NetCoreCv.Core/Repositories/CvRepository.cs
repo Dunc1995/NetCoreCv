@@ -1,23 +1,22 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using NetCoreCv.Core.Interfaces;
-using NetCoreCv.Core.Repositories;
+using NetCoreCv.Core.Models;
 
-namespace NetCoreCv.Core;
-public class CvRepository<T> : IRepository<T> where T : class, IModel
+namespace NetCoreCv.Core.Repositories;
+public class CvRepository
 {
-    private readonly CvContext _context;
+    private protected readonly CvContext _context;
 
     public CvRepository(CvContext context)
     {
         _context = context;
     }
 
-    public async Task<T?> GetAsync(int workExperienceId)
+    public virtual async Task<T?> GetAsync<T>(int workExperienceId) where T : class
     {
         return await _context.FindAsync<T>(workExperienceId);
     }
 
-    public async Task DeleteAsync(int id)
+    public async Task DeleteAsync<T>(int id) where T : class
     {
         var item = await _context.FindAsync<T>(id);
 
@@ -28,14 +27,14 @@ public class CvRepository<T> : IRepository<T> where T : class, IModel
         }
     }
 
-    public async Task<IEnumerable<T>> GetAllAsync()
+    public async Task<IEnumerable<T>> GetAllAsync<T>() where T : class
     {
         return await _context.Set<T>().ToListAsync();
     }
 
-    public async Task PutAsync(T item)
+    public async Task PutAsync<T>(T item) where T : class
     {
-        var result = await _context.FindAsync<T>(item.Id);
+        var result = await _context.FindAsync<T>(item);
 
         if (result == null)
         {

@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using NetCoreCv.Core.Interfaces;
 using NetCoreCv.Core.Models;
 using System;
 using System.Collections.Generic;
@@ -12,7 +11,7 @@ namespace NetCoreCv.Core.Repositories
 
         public DbSet<WorkExperience> WorkExperiences { get; set; }
 
-        public DbSet<WorkExperienceResponsibility> WorkExperienceResponsibilities { get; set; }
+        public DbSet<Responsibility> WorkExperienceResponsibilities { get; set; }
 
         public string DbPath { get; }
 

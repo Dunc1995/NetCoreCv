@@ -1,58 +1,59 @@
 ﻿using System.Collections;
 using Microsoft.AspNetCore.Mvc;
-using NetCoreCv.Core.Interfaces;
+using NetCoreCv.Core;
+using NetCoreCv.Core.Repositories;
 using NetCoreCv.WebApp;
-using NetCoreCv.WebApp.Interfaces;
 
 namespace NetCoreCv.WebApp.Controllers;
 
-public abstract class CrudController<T, U, V> : Controller
-    where T : IViewModel<T, U>, new()
-    where U : class, new()
-    where V : IRepository<U>
+[ApiController]
+[Route("api/[controller]")]
+public abstract class CrudController<U> : ControllerBase where U : class, new()
 {
-    private protected readonly IRepository<U> _context;
+    private protected readonly CvRepository _context;
 
-    public CrudController(IRepository<U> context)
+    public CrudController(CvRepository context)
     {
         _context = context;
     }
 
-    public virtual async Task<IActionResult> Index()
+    [HttpGet("")]
+    public virtual async Task<IEnumerable<U>> Index()
     {
-        return View((await _context.GetAllAsync()).Select(x => (T)x));
+        return (await _context.GetAllAsync<U>()).Select(x => x);
     }
 
-    [HttpGet]
-    public async Task<IActionResult> Edit(int? id)
+    [HttpGet("Get")]
+    [HttpGet("Get/{id:int}")]
+    public virtual async Task<U> Get(int? id)
     {
-        var model = new T();
+        var model = new U();
 
         if (id != null) {
-            var result = await _context.GetAsync((int)id);
+            var result = await _context.GetAsync<U>((int)id);
 
             if (result != null) {
-                model = (T)result;
+                model = result;
             }
         }
 
-        return View(model);
+        return model;
     }
 
-    [HttpPut]
-    public async Task<IActionResult> Edit([FromBody]T model)
+    [HttpPut("Edit")]
+    public async Task<IActionResult> Edit([FromBody]U model)
     {
-        var _model = (U)model; 
+        var _model = model; 
 
-        await _context.PutAsync(_model);
+        await _context.PutAsync(model);
 
         return Ok();
     }
 
-    [HttpDelete]
+    [HttpDelete("Delete")]
     public async Task<IActionResult> Delete(int id) {
         
-        await _context.DeleteAsync(id);
+        await _context.DeleteAsync<U>(id);
 
         return Ok();
     }

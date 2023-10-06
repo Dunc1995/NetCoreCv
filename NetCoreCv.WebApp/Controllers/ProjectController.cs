@@ -1,13 +1,12 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using NetCoreCv.Core;
 using NetCoreCv.Core.Models;
 using NetCoreCv.Core.Repositories;
-using NetCoreCv.WebApp.ViewModels;
-
 namespace NetCoreCv.WebApp.Controllers;
 
-public class ProjectController : CrudController<ProjectViewModel, Project, ProjectRepository>
+public class ProjectController : CrudController<Project>
 {
-    public ProjectController(ProjectRepository context) : base(context)
+    public ProjectController(CvRepository context) : base(context)
     {
 
     }

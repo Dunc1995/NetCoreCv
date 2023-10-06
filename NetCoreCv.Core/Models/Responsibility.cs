@@ -1,11 +1,9 @@
 ﻿using NetCoreCv.Core.Models;
 
 namespace NetCoreCv.Core.Models;
-public class WorkExperienceResponsibility : IModel
+public class Responsibility
 {
-    public int Id => WorkExperienceResponsibilityId;
-
-    public int WorkExperienceResponsibilityId { get; set; }
+    public int ResponsibilityId { get; set; }
 
     public string Description { get; set; } = "";
 

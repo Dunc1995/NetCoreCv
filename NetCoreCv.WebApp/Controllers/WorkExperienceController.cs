@@ -1,15 +1,27 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using NetCoreCv.Core.Models;
 using NetCoreCv.Core.Repositories;
-using NetCoreCv.WebApp.ViewModels;
 
 namespace NetCoreCv.WebApp.Controllers;
-public class WorkExperienceController : CrudController<WorkExperienceViewModel, WorkExperience, WorkExperienceRepository>
+public class WorkExperienceController : CrudController<WorkExperience>
 {
-    private readonly ILogger<WorkExperienceController> _logger;
-
-    public WorkExperienceController(WorkExperienceRepository context, ILogger<WorkExperienceController> logger) : base(context)
+    public WorkExperienceController(CvRepository context) : base(context)
     {
-        _logger = logger;
+
+    }
+
+    public override async Task<WorkExperience> Get(int? id)
+    {
+        var model = new WorkExperience();
+
+        if (id != null) {
+            var result = await _context.GetWorkExperienceAsync((int)id);
+
+            if (result != null) {
+                model = result;
+            }
+        }
+
+        return model;
     }
 }
