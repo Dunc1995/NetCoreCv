@@ -4,13 +4,15 @@ using NetCoreCv.WebApp.Interfaces;
 namespace NetCoreCv.WebApp.Schemas;
 public class ProjectSchema : ISchema<ProjectSchema, Project>
 {
-    public int Id => ProjectId;
+    public int Id { get; set; }
 
-    public int ProjectId { get; set; }
+    public int? AddressId { get; set; }
 
     public string Title { get; set; } = "";
 
     public string Description { get; set; } = "";
+
+    public AddressSchema? Address { get; set; }
 
     public ProjectSchema()
     {
@@ -19,15 +21,19 @@ public class ProjectSchema : ISchema<ProjectSchema, Project>
 
     public static explicit operator ProjectSchema(Project model) => new()
     {
-        ProjectId = model.ProjectId,
+        Id = model.ProjectId,
         Title = model.Title,
-        Description = model.Description
+        Description = model.Description,
+        AddressId = model.AddressId,
+        Address = model.Address != null ? (AddressSchema)model.Address : null
     };
 
     public static explicit operator Project(ProjectSchema schema) => new()
     {
-        ProjectId = schema.ProjectId,
+        ProjectId = schema.Id,
         Title = schema.Title,
-        Description = schema.Description
+        Description = schema.Description,
+        AddressId = schema.AddressId,
+        Address = schema.Address != null ? (Address)schema.Address : null
     };
 }

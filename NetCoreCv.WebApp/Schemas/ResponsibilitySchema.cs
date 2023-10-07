@@ -4,9 +4,7 @@ using NetCoreCv.WebApp.Interfaces;
 namespace NetCoreCv.WebApp.Schemas;
 public class ResponsibilitySchema : ISchema<ResponsibilitySchema, Responsibility>
 {
-    public int Id => ResponsibilityId;
-
-    public int ResponsibilityId { get; set; }
+    public int Id { get; set; }
 
     public string Description { get; set; } = "";
 
@@ -15,14 +13,14 @@ public class ResponsibilitySchema : ISchema<ResponsibilitySchema, Responsibility
 
     public static explicit operator ResponsibilitySchema(Responsibility model) => new()
     {
-        ResponsibilityId = model.ResponsibilityId,
+        Id = model.ResponsibilityId,
         Description = model.Description,
         WorkExperienceId = model.WorkExperienceId
     };
 
     public static explicit operator Responsibility(ResponsibilitySchema schema) => new()
     {
-        ResponsibilityId = schema.ResponsibilityId,
+        ResponsibilityId = schema.Id,
         Description = schema.Description,
         WorkExperienceId = schema.WorkExperienceId
     };
