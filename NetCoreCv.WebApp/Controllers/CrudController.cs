@@ -3,12 +3,15 @@ using Microsoft.AspNetCore.Mvc;
 using NetCoreCv.Core;
 using NetCoreCv.Core.Repositories;
 using NetCoreCv.WebApp;
+using NetCoreCv.WebApp.Interfaces;
 
 namespace NetCoreCv.WebApp.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public abstract class CrudController<U> : ControllerBase where U : class, new()
+public abstract class CrudController<T, U> : ControllerBase 
+where T : class, ISchema<T, U>
+where U : class, new()
 {
     private protected readonly CvRepository _context;
 
@@ -18,14 +21,14 @@ public abstract class CrudController<U> : ControllerBase where U : class, new()
     }
 
     [HttpGet("")]
-    public virtual async Task<IEnumerable<U>> Index()
+    public virtual async Task<IEnumerable<T>> Index()
     {
-        return (await _context.GetAllAsync<U>()).Select(x => x);
+        return (await _context.GetAllAsync<U>()).Select(x => (T)x);
     }
 
     [HttpGet("Get")]
     [HttpGet("Get/{id:int}")]
-    public virtual async Task<U> Get(int? id)
+    public virtual async Task<T> Get(int? id)
     {
         var model = new U();
 
@@ -37,15 +40,13 @@ public abstract class CrudController<U> : ControllerBase where U : class, new()
             }
         }
 
-        return model;
+        return (T)model;
     }
 
-    [HttpPut("Edit")]
-    public async Task<IActionResult> Edit([FromBody]U model)
+    [HttpPut("Put")]
+    public async Task<IActionResult> Put([FromBody]T schema)
     {
-        var _model = model; 
-
-        await _context.PutAsync(model);
+        await _context.PutAsync(schema.Id, (U)schema);
 
         return Ok();
     }

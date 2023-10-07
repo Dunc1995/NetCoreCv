@@ -33,7 +33,7 @@ namespace NetCoreCv.Core.Migrations
 
                     b.HasKey("ProjectId");
 
-                    b.ToTable("Projects");
+                    b.ToTable("Projects", (string)null);
                 });
 
             modelBuilder.Entity("NetCoreCv.Core.Models.Responsibility", b =>
@@ -53,7 +53,7 @@ namespace NetCoreCv.Core.Migrations
 
                     b.HasIndex("WorkExperienceId");
 
-                    b.ToTable("WorkExperienceResponsibilities");
+                    b.ToTable("WorkExperienceResponsibilities", (string)null);
                 });
 
             modelBuilder.Entity("NetCoreCv.Core.Models.WorkExperience", b =>
@@ -74,7 +74,7 @@ namespace NetCoreCv.Core.Migrations
 
                     b.HasKey("WorkExperienceId");
 
-                    b.ToTable("WorkExperiences");
+                    b.ToTable("WorkExperiences", (string)null);
                 });
 
             modelBuilder.Entity("NetCoreCv.Core.Models.Responsibility", b =>

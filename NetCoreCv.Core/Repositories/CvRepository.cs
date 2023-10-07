@@ -32,9 +32,9 @@ public class CvRepository
         return await _context.Set<T>().ToListAsync();
     }
 
-    public async Task PutAsync<T>(T item) where T : class
+    public async Task PutAsync<T>(int id, T item) where T : class
     {
-        var result = await _context.FindAsync<T>(item);
+        var result = await _context.FindAsync<T>(id);
 
         if (result == null)
         {

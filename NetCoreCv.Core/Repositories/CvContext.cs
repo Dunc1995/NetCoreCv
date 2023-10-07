@@ -27,6 +27,9 @@ namespace NetCoreCv.Core.Repositories
         protected override void OnConfiguring(DbContextOptionsBuilder options)
             => options.UseSqlite($"Data Source={DbPath}");
 
-        public Task SaveChangesAsync() => base.SaveChangesAsync();
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<WorkExperience>().Navigation(x => x.Responsibilities).AutoInclude();
+        }
     }
 }

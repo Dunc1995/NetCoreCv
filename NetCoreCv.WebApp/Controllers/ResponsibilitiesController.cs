@@ -4,9 +4,10 @@ using NetCoreCv.Core.Repositories;
 using NetCoreCv.WebApp.Schemas;
 
 namespace NetCoreCv.WebApp.Controllers;
-public class WorkExperienceController : CrudController<WorkExperienceSchema, WorkExperience>
+
+public class ResponsibilitiesController : CrudController<ResponsibilitySchema, Responsibility>
 {
-    public WorkExperienceController(CvRepository context) : base(context)
+    public ResponsibilitiesController(CvRepository context) : base(context)
     {
 
     }
