@@ -1,0 +1,11 @@
+{
+  "devDependencies": {
+    "typescript": "^5.2.2",
+    "vite": "^4.4.11"
+  },
+  "scripts": {
+    "start": "echo Starting the development server && vite",
+    "dev": "vite",
+    "build": "vite build"
+  }
+}

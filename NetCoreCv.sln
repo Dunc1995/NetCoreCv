@@ -5,7 +5,7 @@ VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetCoreCv.DbSeed", "NetCoreCv.DbSeed\NetCoreCv.DbSeed.csproj", "{BA3BF33D-1851-495E-AF00-75F0301C69CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetCoreCv.WebApp", "NetCoreCv.WebApp\NetCoreCv.WebApp.csproj", "{7C78E2C6-992A-4553-8978-18D0BD28C66E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetCoreCv.Api", "NetCoreCv.Api\NetCoreCv.Api.csproj", "{7C78E2C6-992A-4553-8978-18D0BD28C66E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetCoreCv.Core", "NetCoreCv.Core\NetCoreCv.Core.csproj", "{594F99C4-D64D-4241-B685-37530FB4C180}"
 EndProject
