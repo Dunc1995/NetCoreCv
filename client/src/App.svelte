@@ -1,10 +1,11 @@
 <script>
-  import WorkExperience from './lib/WorkExperience.svelte'
+  import SideBar from './lib/SideBar.svelte';
+  import WorkExperience from './lib/WorkExperience.svelte';
+  import Card from './lib/Card.svelte';
 </script>
 
 <main>
-  <h1 class="text-3xl font-bold underline">
-    Portfolio
-  </h1>
+  <SideBar/>
+  <Card/>
   <WorkExperience />
 </main>
