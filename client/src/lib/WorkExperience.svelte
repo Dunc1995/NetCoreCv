@@ -9,17 +9,20 @@
     }
 </script>
 {#await getWorkExperience() then experiences}
+<div class="grid grid-flow-row auto-rows-max gap-4 p-5">
 {#each experiences as { jobTitle, startDateDisplay, endDateDisplay, responsibilities }}
-<div>
-    <strong>{jobTitle}</strong>
-    <br>
-    <span>{startDateDisplay} - {endDateDisplay}</span>
-    <ul>
-        {#each responsibilities as { description }}
-        <li>{description}</li>
-        {/each}
-    </ul>
+<div class="">
+    <h2 class="font-medium">{jobTitle}</h2>
+    <span class="italic">{startDateDisplay} - {endDateDisplay}</span>
+    <div class="pl-3">
+        <ul>
+            {#each responsibilities as { description }}
+            <li>{description}</li>
+            {/each}
+        </ul>
+    </div>
 </div>
 {/each}
+</div>
 {/await}
   
