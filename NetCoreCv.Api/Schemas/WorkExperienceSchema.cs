@@ -1,5 +1,6 @@
 using NetCoreCv.Core.Models;
 using NetCoreCv.Api.Interfaces;
+using System.ComponentModel.DataAnnotations;
 
 namespace NetCoreCv.Api.Schemas;
 public class WorkExperienceSchema : ISchema<WorkExperienceSchema, WorkExperience>
@@ -13,6 +14,10 @@ public class WorkExperienceSchema : ISchema<WorkExperienceSchema, WorkExperience
     public DateTime StartDate { get; set; }
 
     public DateTime EndDate { get; set; }
+
+    public string StartDateDisplay => StartDate.ToString("MMMM yyyy");
+
+    public string EndDateDisplay => StartDate.ToString("MMMM yyyy");
 
     public AddressSchema? Address { get; set; }
 

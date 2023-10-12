@@ -6,7 +6,9 @@ export class WorkExperience {
     addressId: number | null;
     jobTitle: string;
     startDate: string;
+    startDateDisplay: string;
     endDate: string;
+    endDateDisplay: string;
     address: Address | null;
     responsibilities: Responsibility[] | null;
 }

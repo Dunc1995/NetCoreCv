@@ -1,6 +1,19 @@
 using NetCoreCv.Core.Repositories;
 
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(MyAllowSpecificOrigins,
+                          policy =>
+                          {
+                              policy.WithOrigins("http://localhost:5173")
+                                                  .AllowAnyHeader()
+                                                  .AllowAnyMethod();
+                          });
+});
 
 // Add services to the container.
 builder.Services.AddScoped<CvContext>();
@@ -24,5 +37,6 @@ app.UseHttpsRedirection();
 app.MapControllers();
 
 app.UseAuthorization();
+app.UseCors(MyAllowSpecificOrigins);
 
 app.Run();
