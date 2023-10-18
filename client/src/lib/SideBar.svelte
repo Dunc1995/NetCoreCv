@@ -3,12 +3,10 @@
 </script>
 <nav>
   <ul>
-    <SideBarButton text="Curriculum Vitae">
-      <i slot="icon" class="fa-solid fa-briefcase"></i>
-    </SideBarButton>
-    <SideBarButton text="Work Experience"/>
-    <SideBarButton text="Projects"/>
-    <SideBarButton text="Education"/>
+    <SideBarButton text="Curriculum Vitae" iconName="file-lines"/>
+    <SideBarButton text="Work Experience" iconName="briefcase"/>
+    <SideBarButton text="Projects" iconName="hammer"/>
+    <SideBarButton text="Education" iconName="user-graduate"/>
   </ul>
 </nav>
 <button>
