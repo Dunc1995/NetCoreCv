@@ -8,7 +8,11 @@ public class Address
 
     public string SecondLine { get; set; } = "";
 
+    public string TownOrCity { get; set; } = "";
+
     public string County { get; set; } = "";
+
+    public Countries Country { get; set; }
 
     public string PostCode { get; set; } = "";
 

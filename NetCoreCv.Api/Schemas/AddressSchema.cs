@@ -13,6 +13,8 @@ public class AddressSchema : ISchema<AddressSchema, Address>
 
     public string County { get; set; } = "";
 
+    public string Country { get; set; } = "";
+
     public string PostCode { get; set; } = "";
 
     public bool IsCurrent { get; set; }
@@ -29,6 +31,7 @@ public class AddressSchema : ISchema<AddressSchema, Address>
         FirstLine = model.FirstLine,
         SecondLine = model.SecondLine,
         County = model.County,
+        Country = model.Country,
         PostCode = model.PostCode,
         IsCurrent = model.IsCurrent,
         Projects = model.Projects?.Select(x => (ProjectSchema)x) ?? Enumerable.Empty<ProjectSchema>(),
@@ -41,6 +44,7 @@ public class AddressSchema : ISchema<AddressSchema, Address>
         FirstLine = schema.FirstLine,
         SecondLine = schema.SecondLine,
         County = schema.County,
+        Country = schema.Country,
         PostCode = schema.PostCode,
         IsCurrent = schema.IsCurrent,
         Projects = schema.Projects?.Select(x => (Project)x) ?? Enumerable.Empty<Project>(),

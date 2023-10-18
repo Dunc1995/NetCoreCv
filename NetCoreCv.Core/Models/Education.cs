@@ -6,6 +6,8 @@ public class Education
 
     public int? AddressId { get; set; }
 
+    public int? CompanyId { get; set; }
+
     public string Title { get; set; } = "";
 
     public string Grade { get; set; } = "";
@@ -15,4 +17,6 @@ public class Education
     public DateTime EndDate { get; set; }
 
     public Address? Address { get; set; }
+
+    public Company? Company { get; set; }
 }

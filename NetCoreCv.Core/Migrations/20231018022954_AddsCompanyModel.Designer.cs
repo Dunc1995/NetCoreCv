@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NetCoreCv.Core.Repositories;
 
@@ -10,9 +11,11 @@ using NetCoreCv.Core.Repositories;
 namespace NetCoreCv.Core.Migrations
 {
     [DbContext(typeof(CvContext))]
-    partial class CvContextModelSnapshot : ModelSnapshot
+    [Migration("20231018022954_AddsCompanyModel")]
+    partial class AddsCompanyModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.11");
@@ -21,9 +24,6 @@ namespace NetCoreCv.Core.Migrations
                 {
                     b.Property<int>("AddressId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("Country")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("County")
@@ -49,10 +49,6 @@ namespace NetCoreCv.Core.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime?>("StartDate")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("TownOrCity")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("AddressId");

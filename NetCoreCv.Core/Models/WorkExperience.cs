@@ -5,6 +5,8 @@ public class WorkExperience
 
     public int? AddressId { get; set; }
 
+    public int? CompanyId { get; set; }
+
     public string JobTitle { get; set; } = "";
 
     public DateTime StartDate { get; set; }
@@ -12,6 +14,8 @@ public class WorkExperience
     public DateTime EndDate { get; set; }
 
     public Address? Address { get; set; }
+
+    public Company? Company { get; set; }
 
     public IEnumerable<Responsibility>? Responsibilities { get; set; }
 
