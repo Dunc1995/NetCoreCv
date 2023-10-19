@@ -1,8 +1,7 @@
 ﻿using NetCoreCv.Core.Models;
 using NetCoreCv.Api.Interfaces;
-using NetCoreCv.Api.Schemas;
 
-namespace NetCoreCv.Api;
+namespace NetCoreCv.Api.Schemas;
 public class AddressSchema : ISchema<AddressSchema, Address>
 {
     public int Id { get; set; }
@@ -13,17 +12,11 @@ public class AddressSchema : ISchema<AddressSchema, Address>
 
     public string County { get; set; } = "";
 
-    public string Country { get; set; } = "";
+    public Countries Country { get; set; }
 
     public string PostCode { get; set; } = "";
 
     public bool IsCurrent { get; set; }
-
-    public IEnumerable<ProjectSchema>? Projects { get; set; }
-
-    public IEnumerable<WorkExperienceSchema>? WorkExperiences { get; set; }
-
-    public IEnumerable<EducationSchema>? Education { get; set; }
 
 
     public static explicit operator AddressSchema(Address model) => new() {
@@ -33,10 +26,7 @@ public class AddressSchema : ISchema<AddressSchema, Address>
         County = model.County,
         Country = model.Country,
         PostCode = model.PostCode,
-        IsCurrent = model.IsCurrent,
-        Projects = model.Projects?.Select(x => (ProjectSchema)x) ?? Enumerable.Empty<ProjectSchema>(),
-        WorkExperiences = model.WorkExperiences?.Select(x => (WorkExperienceSchema)x) ?? Enumerable.Empty<WorkExperienceSchema>(),
-        Education = model.Education?.Select(x => (EducationSchema)x) ?? Enumerable.Empty<EducationSchema>()
+        IsCurrent = model.IsCurrent
     };
 
     public static explicit operator Address(AddressSchema schema) => new() {
@@ -46,9 +36,6 @@ public class AddressSchema : ISchema<AddressSchema, Address>
         County = schema.County,
         Country = schema.Country,
         PostCode = schema.PostCode,
-        IsCurrent = schema.IsCurrent,
-        Projects = schema.Projects?.Select(x => (Project)x) ?? Enumerable.Empty<Project>(),
-        WorkExperiences = schema.WorkExperiences?.Select(x => (WorkExperience)x) ?? Enumerable.Empty<WorkExperience>(),
-        Education = schema.Education?.Select(x => (Education)x) ?? Enumerable.Empty<Education>()
+        IsCurrent = schema.IsCurrent
     };
 }

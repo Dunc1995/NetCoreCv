@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NetCoreCv.Core.Repositories;
 
@@ -10,9 +11,11 @@ using NetCoreCv.Core.Repositories;
 namespace NetCoreCv.Core.Migrations
 {
     [DbContext(typeof(CvContext))]
-    partial class CvContextModelSnapshot : ModelSnapshot
+    [Migration("20231019015056_AddsIdentity")]
+    partial class AddsIdentity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.12");
@@ -249,7 +252,7 @@ namespace NetCoreCv.Core.Migrations
 
                     b.HasKey("AddressId");
 
-                    b.ToTable("Addresses");
+                    b.ToTable("Address");
                 });
 
             modelBuilder.Entity("NetCoreCv.Core.Models.Company", b =>
@@ -264,7 +267,7 @@ namespace NetCoreCv.Core.Migrations
 
                     b.HasKey("CompanyId");
 
-                    b.ToTable("Companies");
+                    b.ToTable("Company");
                 });
 
             modelBuilder.Entity("NetCoreCv.Core.Models.CurriculumVitae", b =>
@@ -285,7 +288,7 @@ namespace NetCoreCv.Core.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("CurriculumVitaes");
+                    b.ToTable("CurriculumVitae");
                 });
 
             modelBuilder.Entity("NetCoreCv.Core.Models.DateRange", b =>
@@ -307,7 +310,7 @@ namespace NetCoreCv.Core.Migrations
 
                     b.HasIndex("WorkExperienceId");
 
-                    b.ToTable("DateRanges");
+                    b.ToTable("DateRange");
                 });
 
             modelBuilder.Entity("NetCoreCv.Core.Models.Education", b =>
@@ -396,7 +399,7 @@ namespace NetCoreCv.Core.Migrations
 
                     b.HasIndex("WorkExperienceId");
 
-                    b.ToTable("Responsibilities");
+                    b.ToTable("WorkExperienceResponsibilities");
                 });
 
             modelBuilder.Entity("NetCoreCv.Core.Models.WorkExperience", b =>

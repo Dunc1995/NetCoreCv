@@ -11,6 +11,10 @@ public class Project
 
     public Address? Address { get; set; }
 
+    public int CurriculumVitaeId { get; set; }
+
+    public CurriculumVitae? CurriculumVitae { get; set; }
+
     public Project()
     {
 

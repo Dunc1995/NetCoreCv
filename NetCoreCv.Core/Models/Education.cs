@@ -19,4 +19,8 @@ public class Education
     public Address? Address { get; set; }
 
     public Company? Company { get; set; }
+
+    public int CurriculumVitaeId { get; set; }
+
+    public CurriculumVitae? CurriculumVitae { get; set; }
 }

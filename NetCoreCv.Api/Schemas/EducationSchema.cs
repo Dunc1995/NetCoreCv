@@ -1,7 +1,7 @@
 ﻿using NetCoreCv.Core.Models;
 using NetCoreCv.Api.Interfaces;
 
-namespace NetCoreCv.Api;
+namespace NetCoreCv.Api.Schemas;
 public class EducationSchema : ISchema<EducationSchema, Education>
 {
     public int Id { get; set; }

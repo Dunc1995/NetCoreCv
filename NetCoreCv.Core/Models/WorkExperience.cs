@@ -9,15 +9,17 @@ public class WorkExperience
 
     public string JobTitle { get; set; } = "";
 
-    public DateTime StartDate { get; set; }
-
-    public DateTime EndDate { get; set; }
+    public IEnumerable<DateRange>? WorkPeriods { get; set; }
 
     public Address? Address { get; set; }
 
     public Company? Company { get; set; }
 
     public IEnumerable<Responsibility>? Responsibilities { get; set; }
+
+    public int CurriculumVitaeId { get; set; }
+
+    public CurriculumVitae? CurriculumVitae { get; set; }
 
     public WorkExperience() {
 

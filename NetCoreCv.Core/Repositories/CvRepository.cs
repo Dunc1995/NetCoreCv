@@ -1,9 +1,25 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Data.Common;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query;
 using NetCoreCv.Core.Models;
 
 namespace NetCoreCv.Core.Repositories;
 public class CvRepository
 {
+    public async Task LoadEntities<T>(int id, T obj) where T : class
+    {
+        switch (obj)
+        {
+            case CurriculumVitae curriculumVitae:
+                await _context.CurriculumVitaes
+                        .Include(x => x.WorkExperience)
+                            .ThenInclude(x => x.Address).FirstOrDefaultAsync(x => x.CurriculumVitaeId == id);
+                break;
+            default:
+                break;
+        }
+    }
+
     private protected readonly CvContext _context;
 
     public CvRepository(CvContext context)
@@ -13,7 +29,13 @@ public class CvRepository
 
     public virtual async Task<T?> GetAsync<T>(int workExperienceId) where T : class
     {
-        return await _context.FindAsync<T>(workExperienceId);
+        var data = await _context.FindAsync<T>(workExperienceId);
+
+        if (data != null) {
+            await LoadEntities(workExperienceId, data);
+        }
+
+        return data;
     }
 
     public async Task DeleteAsync<T>(int id) where T : class
