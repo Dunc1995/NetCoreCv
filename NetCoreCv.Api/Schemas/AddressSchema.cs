@@ -1,7 +1,9 @@
 ﻿using NetCoreCv.Core.Models;
 using NetCoreCv.Api.Interfaces;
+using NetCoreCv.Core.Helpers;
 
 namespace NetCoreCv.Api.Schemas;
+
 public class AddressSchema : ISchema<AddressSchema, Address>
 {
     public int Id { get; set; }
@@ -10,9 +12,13 @@ public class AddressSchema : ISchema<AddressSchema, Address>
 
     public string SecondLine { get; set; } = "";
 
+    public string TownOrCity { get; set; } = "";
+
     public string County { get; set; } = "";
 
     public Countries Country { get; set; }
+
+    public string CountryName => Country.GetDisplayName();
 
     public string PostCode { get; set; } = "";
 
@@ -23,6 +29,7 @@ public class AddressSchema : ISchema<AddressSchema, Address>
         Id = model.AddressId,
         FirstLine = model.FirstLine,
         SecondLine = model.SecondLine,
+        TownOrCity = model.TownOrCity,
         County = model.County,
         Country = model.Country,
         PostCode = model.PostCode,
@@ -33,6 +40,7 @@ public class AddressSchema : ISchema<AddressSchema, Address>
         AddressId = schema.Id,
         FirstLine = schema.FirstLine,
         SecondLine = schema.SecondLine,
+        TownOrCity = schema.TownOrCity,
         County = schema.County,
         Country = schema.Country,
         PostCode = schema.PostCode,

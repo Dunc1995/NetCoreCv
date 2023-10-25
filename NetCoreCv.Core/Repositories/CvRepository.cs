@@ -13,6 +13,8 @@ public class CvRepository
             case CurriculumVitae curriculumVitae:
                 await _context.CurriculumVitaes
                         .Include(x => x.WorkExperience)
+                            .ThenInclude(x => x.Company)
+                        .Include(x => x.WorkExperience)
                             .ThenInclude(x => x.Address).FirstOrDefaultAsync(x => x.CurriculumVitaeId == id);
                 break;
             default:

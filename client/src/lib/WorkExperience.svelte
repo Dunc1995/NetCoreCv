@@ -3,27 +3,24 @@ import {
     WorkExperience
 } from "../schemas/work-experience";
 
-const getWorkExperience = async (): Promise < WorkExperience[] > => {
-    const response = await fetch("http://localhost:5187/api/WorkExperience");
-    const content = await response.json();
-
-    return content;
-}
+export let experience : WorkExperience
+const { jobTitle, company, address, startDateDisplay, endDateDisplay, responsibilities } = experience;
 </script>
-{#await getWorkExperience() then experiences}
-<div class="grid grid-flow-row auto-rows-max gap-4 p-5">
-    {#each experiences as { jobTitle, startDateDisplay, endDateDisplay, responsibilities }}
-    <div class="">
-        <h2 class="font-medium">{jobTitle}</h2>
-        <span class="italic">{startDateDisplay} - {endDateDisplay}</span>
-        <div class="pl-3">
-            <ul>
-                {#each responsibilities as { description }}
-                <li>{description}</li>
-                {/each}
-            </ul>
-        </div>
+
+<div class="border-spacing-1">
+    <h2 class="font-semibold">{jobTitle}</h2>
+    <span class="font-medium">{company.name}</span><br>
+    <div>
+        <span class="font-light">{address.townOrCity}, {address.countryName}</span><br>
+        <span class="italic font-light">{startDateDisplay} - {endDateDisplay}</span>
     </div>
-    {/each}
+    <div class="pl-3">
+        <ul>
+            <li>Testing 1, 2, 3</li>
+            <!-- {#each responsibilities as { description }}
+            <li>{description}</li>
+            {/each} -->
+        </ul>
+    </div>
 </div>
-{/await}
+

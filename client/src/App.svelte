@@ -1,8 +1,18 @@
-<script>
+<script lang="ts">
   import SideBar from './lib/SideBar.svelte';
   import WorkExperience from './lib/WorkExperience.svelte';
-  import Card from './lib/Card.svelte';
-    import Picture from './lib/Picture.svelte';
+  import Picture from './lib/Picture.svelte';
+  import CvSection from './lib/CvSection.svelte';
+  import {
+    CurriculumVitae
+} from "./schemas/curriculum-vitae";
+
+const getCurriculumVitae = async (): Promise <CurriculumVitae> => {
+  const response = await fetch("http://localhost:5187/api/CurriculumVitae/Get/1");
+  const content = await response.json();
+
+  return content;
+}
 </script>
 
 <main>
@@ -11,8 +21,23 @@
       <Picture/>
       <SideBar/>
     </div>
-    <div class="bg-green-500 md:col-span-5">
-      02
+
+{#await getCurriculumVitae() then cv}
+    <div class="md:col-span-5 md:border-l-2 md:border-solid md:border-gray-100">
+      <CvSection title="Education">
+        Hello World
+      </CvSection>
+      <CvSection title="Work Experience">
+        <div class="grid grid-flow-row auto-rows-max gap-4 p-5">
+          {#each cv.workExperience as experience}
+          <WorkExperience {experience}/>
+          {/each}
+        </div>
+      </CvSection>
+      <CvSection title="Projects">
+        Hello World
+      </CvSection>
     </div>
+{/await}
   </div>
 </main>

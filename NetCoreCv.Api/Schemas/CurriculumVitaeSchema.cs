@@ -30,7 +30,10 @@ public class CurriculumVitaeSchema : ISchema<CurriculumVitaeSchema, CurriculumVi
         EmailAddress = model.User?.Email ?? "",
         Education = model.Education.Select(x => (EducationSchema)x),
         Projects = model.Projects.Select(x => (ProjectSchema)x),
-        WorkExperience = model.WorkExperience.Select(x => (WorkExperienceSchema)x)
+        WorkExperience = model.WorkExperience
+            .Select(x => (WorkExperienceSchema)x)
+            .OrderBy(x => x.StartDate)
+            .Reverse()
     };
 
     public static explicit operator CurriculumVitae(CurriculumVitaeSchema schema) => new() {
